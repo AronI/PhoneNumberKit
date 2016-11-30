@@ -137,7 +137,7 @@ class SynchronizedArray<T> {
     var array: [T] = []
     private let accessQueue = dispatch_queue_create("SynchronizedArrayAccess", DISPATCH_QUEUE_SERIAL)
     func append(newElement: T) {
-        dispatch_async(self.accessQueue) {
+        dispatch_sync(self.accessQueue) {
             self.array.append(newElement)
         }
     }
